@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 import itertools
-from time import time
 from inspect import signature
+from time import time
+
 from .key import Action, Combo, Key, Modifier
-from .output import send_combo, send_key_action, send_key, is_pressed
+from .output import is_pressed, send_combo, send_key, send_key_action
 
 __author__ = 'zh'
 
@@ -134,7 +135,7 @@ def K(exp):
     import re
     modifier_strs = []
     while True:
-        m = re.match(r"\A(LC|LCtrl|RC|RCtrl|C|Ctrl|LM|LAlt|RM|RAlt|M|Alt|LShift|RShift|Shift|LSuper|LWin|RSuper|RWin|Super|Win)-", exp)
+        m = re.match(r"\A(LC|LCtrl|RC|RCtrl|C|Ctrl|LM|LAlt|RM|RAlt|M|Alt|LShift|RShift|Shift|LSuper|LWin|RSuper|RWin|Super|Win|LH|LHyper|RH|RHyper|H|Hyper)-", exp)
         if m is None:
             break
         modifier = m.group(1)
@@ -175,6 +176,12 @@ def create_modifiers_from_strings(modifier_strs):
             modifiers.add(Modifier.R_SHIFT)
         elif modifier_str == 'Shift':
             modifiers.add(Modifier.SHIFT)
+        elif modifier_str == 'LHyper':
+            modifiers.add(Modifier.L_HYPER)
+        elif modifier_str == 'RHyper':
+            modifiers.add(Modifier.R_HYPER)
+        elif modifier_str == 'Hyper':
+            modifiers.add(Modifier.HYPER)
     return modifiers
 
 # ============================================================
