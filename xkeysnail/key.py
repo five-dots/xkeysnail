@@ -267,8 +267,8 @@ class Key(IntEnum):
 
     MICMUTE = 248
 
-    LEFT_HYPER = 90
-    RIGHT_HYPER = 91
+    LEFT_HYPER = 249
+    RIGHT_HYPER = 250
 
     BTN_MISC = 0x100
     BTN_0    = 0x100
